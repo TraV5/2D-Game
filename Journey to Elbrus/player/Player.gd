@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
-var run_speed = 350
-var jump_speed = -1000
+var run_speed = 150
+var jump_speed = -200
+var gravity = 300
 
+
+@onready var animated_sprite := $AnimatedSprite2D
 
 func get_input():
 	velocity.x = 0
@@ -17,20 +20,15 @@ func get_input():
 	if left:
 		velocity.x -= run_speed
 
-func _physics_process(delta):
+func _physics_process(delta: float):
+	velocity.y += gravity * delta
+	
 	get_input()
+	_play_move_animation(velocity)
 	move_and_slide()
-#extends CharacterBody2D
-#
-#var speed = 30
-#
-#
-#func _physics_process(delta: float):
-#	var move_direction = Vector2.ZERO
-#
-#	if Input.is_action_pressed("move_left"):
-#		move_direction.x = -1
-#	elif Input.is_action_pressed("move_right"):
-#		move_direction.x = 1
-#
-#	move_and_slide()
+	
+func _play_move_animation(velocity: Vector2):
+	if velocity.y == gravity and is_on_floor():
+		animated_sprite.play("idle")
+	elif velocity.x != 0 and is_on_floor():
+		animated_sprite.play("run")
