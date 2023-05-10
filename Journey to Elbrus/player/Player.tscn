@@ -54,6 +54,18 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("4_gtrk0")
 region = Rect2(0, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_itb56"]
+atlas = ExtResource("7_xs31p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34ff"]
+atlas = ExtResource("7_xs31p")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1xiq"]
+atlas = ExtResource("7_xs31p")
+region = Rect2(0, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dnpx"]
 atlas = ExtResource("5_gyr5b")
 region = Rect2(0, 0, 32, 32)
@@ -89,18 +101,6 @@ region = Rect2(0, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_od5xd"]
 atlas = ExtResource("7_xs31p")
 region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e6n3g"]
-atlas = ExtResource("7_xs31p")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vedqk"]
-atlas = ExtResource("7_xs31p")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_welwv"]
-atlas = ExtResource("7_xs31p")
-region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7b2o"]
 atlas = ExtResource("8_gh3rx")
@@ -190,6 +190,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_itb56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34ff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1xiq")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2dnpx")
 }, {
 "duration": 1.0,
@@ -225,15 +239,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_od5xd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e6n3g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vedqk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_welwv")
 }],
 "loop": true,
 "name": &"jump",
@@ -289,7 +294,6 @@ script = ExtResource("1_7dbve")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_afb3x")
 animation = &"run"
-frame_progress = 0.237161
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -10)
