@@ -1,11 +1,18 @@
 extends CharacterBody2D
 
+signal hp_changed
+
 var run_speed = 150
-var jump_speed = -200
+const jump_speed = -200
 var gravity = 300
+var hp = 8
 
 
 @onready var animated_sprite := $AnimatedSprite2D
+
+func _ready() -> void:
+	call_deferred("change_hp", 0)
+	_play_animation("idle")
 
 func get_input():
 	velocity.x = 0
@@ -39,3 +46,22 @@ func _play_move_animation(velocity: Vector2):
 		animated_sprite.play("jump")
 	elif velocity.y > 0:
 		animated_sprite.play("fall")
+		
+func _play_animation(animation: String):
+	if animated_sprite.animation != animation:
+		animated_sprite.play(animation)
+
+func on_enemy_contact(enemy: Node2D):
+	hit_enemy(enemy)
+
+func hit_enemy(enemy: Node2D):
+	if enemy.has_method("die"):
+		enemy.die()
+	velocity.y = jump_speed / 2.0
+
+func take_damage():
+	change_hp(-1)
+	
+func change_hp(diff: int):
+	hp += diff
+	emit_signal("hp_changed", hp)

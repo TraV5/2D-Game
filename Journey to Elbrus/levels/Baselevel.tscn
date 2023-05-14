@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://chfv6w5w34u8a"]
+[gd_scene load_steps=12 format=3 uid="uid://chfv6w5w34u8a"]
 
 [ext_resource type="Texture2D" uid="uid://bc8ias13xyjcj" path="res://assets/location/1 Tiles/Tileset.png" id="1_g3ayh"]
 [ext_resource type="PackedScene" uid="uid://cxa6glt3hhw18" path="res://player/Player.tscn" id="2_6n2e3"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://d1a8f7dbmx2ih" path="res://assets/location/2 Background/LayersCave/ParallaxCave3.png" id="4_g76ej"]
 [ext_resource type="Texture2D" uid="uid://biv08e2k1pfwa" path="res://assets/location/2 Background/LayersCave/ParallaxCave2.png" id="5_gy828"]
 [ext_resource type="Texture2D" uid="uid://do3bkiim6f7s4" path="res://assets/location/2 Background/LayersCave/ParallaxCave1.png" id="6_pjmje"]
+[ext_resource type="PackedScene" uid="uid://budr3mtj8f7i2" path="res://player/Enemy.tscn" id="7_1tsqv"]
+[ext_resource type="PackedScene" uid="uid://c7ar8hunk4yhv" path="res://hud/HUD.tscn" id="8_c80bw"]
+[ext_resource type="Texture2D" uid="uid://dqnivgpefl8ke" path="res://assets/health/fill empty hp.png" id="9_d3une"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8pj8q"]
 texture = ExtResource("1_g3ayh")
@@ -329,7 +332,7 @@ terrain_set_0/terrain_0/color = Color(1, 0.0901961, 0, 1)
 sources/1 = SubResource("TileSetAtlasSource_8pj8q")
 
 [node name="Baselevel" type="Node2D"]
-position = Vector2(1238, -1428)
+position = Vector2(1258, -1470)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -389,3 +392,19 @@ position = Vector2(2, 0)
 scale = Vector2(0.465312, 0.25)
 texture = ExtResource("6_pjmje")
 centered = false
+
+[node name="Enemy" parent="." instance=ExtResource("7_1tsqv")]
+position = Vector2(-1643, 850)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("8_c80bw")]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 342.0
+offset_bottom = 40.0
+texture = ExtResource("9_d3une")
+
+[connection signal="hp_changed" from="Player" to="CanvasLayer/HUD" method="update_hp"]
