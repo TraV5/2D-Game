@@ -347,6 +347,7 @@ position = Vector2(-1238, 1472)
 position = Vector2(1, -11)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
+position_smoothing_speed = 4.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 drag_left_margin = 0.1

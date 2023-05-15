@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cxa6glt3hhw18"]
+[gd_scene load_steps=47 format=3 uid="uid://cxa6glt3hhw18"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_7dbve"]
 [ext_resource type="Texture2D" uid="uid://c16dqnafxqn8k" path="res://assets/hero/OrangeRobot/Spritesheets/OrangeRobot_Attack1.png" id="2_7dedr"]
@@ -286,31 +286,65 @@ animations = [{
 radius = 8.0
 height = 20.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6d336"]
-radius = 8.0
-height = 20.0
+[sub_resource type="Animation" id="Animation_w32cn"]
+resource_name = "Immortal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.803922, 0.803922, 1), Color(1, 0.607843, 0.607843, 1), Color(1, 0.411765, 0.411765, 1), Color(1, 0.215686, 0.215686, 1), Color(1, 0, 0, 1), Color(1, 0.215686, 0.215686, 1), Color(1, 0.411765, 0.411765, 1), Color(1, 0.607843, 0.607843, 1), Color(1, 0.803922, 0.803922, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g4jy2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spr1s"]
+_data = {
+"Immortal": SubResource("Animation_w32cn"),
+"RESET": SubResource("Animation_g4jy2")
+}
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(-284, 120)
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_7dbve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_afb3x")
-animation = &"run"
-frame_progress = 0.731771
+animation = &"land"
+frame_progress = 0.566023
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_bisxs")
 
-[node name="EnemyContactArea" type="Area2D" parent="."]
-collision_layer = 2
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+target_position = Vector2(0, 17)
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyContactArea"]
-position = Vector2(0, -10)
-shape = SubResource("CapsuleShape2D_6d336")
-
-[connection signal="body_entered" from="EnemyContactArea" to="." method="on_enemy_contact"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Immortal"
+libraries = {
+"": SubResource("AnimationLibrary_spr1s")
+}
