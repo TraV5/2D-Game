@@ -13,11 +13,14 @@
 4.	Выбор сложности (Под большим вопросом, так как представления по разработке нету “Не влияет на головоломки”)
 5.	Поиск секретных комнат или пасхалок (Не влияет на продвижение по игре)
 
-Протопит: https://www.figma.com/file/fDDGJOciwEU6ebcc6yOHwp/Game-Journey?type=design&node-id=0-1
+*Будет реализовано в будущих версиях*
+
+Прототип: https://www.figma.com/file/fDDGJOciwEU6ebcc6yOHwp/Game-Journey?type=design&node-id=0-1
+
+Build 0.2: https://github.com/TraV5/2D-Game/blob/main/Build%200.2.rar
 
 Скриншоты:
+
 ![image](https://github.com/TraV5/2D-Game/assets/132296559/1374ed8c-e9c2-4833-b39b-2921920f5948)
+
 ![image](https://github.com/TraV5/2D-Game/assets/132296559/5f8fa11c-9b29-46c1-a048-b6aa9ccbb8ee)
-
-
-*Будет реализовано в будущих версиях*
