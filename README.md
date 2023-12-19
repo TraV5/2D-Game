@@ -21,7 +21,6 @@
 Build 0.2: https://github.com/TraV5/2D-Game/blob/main/Build%200.2.rar
 
 Скриншоты:
-![Screen1](https://github.com/TraV5/2D-Game/assets/132296559/3f1b62b2-2f75-4e23-b845-bdec3cabb7d4)
 
 ![image](https://github.com/TraV5/2D-Game/assets/132296559/1374ed8c-e9c2-4833-b39b-2921920f5948)
 
